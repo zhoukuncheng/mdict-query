@@ -1,0 +1,28 @@
+[project]
+name = "mdict-query"
+version = "0.1.0"
+description = "A tool to query MDict dictionaries"
+authors = [
+    { name = "zhoukuncheng" },
+]
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "flask==3.0.3",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/zhoukuncheng/mdict-query"
+"Bug Tracker" = "https://github.com/zhoukuncheng/mdict-query/issues"
+
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]  # Tell setuptools to look in the 'src' directory

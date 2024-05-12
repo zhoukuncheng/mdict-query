@@ -26,8 +26,8 @@ def path2file(path):
 def title2url(title):
     return re.sub(r"。|，|？|\s|,|\.|/|\\|(|)|（|）", "", title.lower())
 # init app
-mdict_dir = 'mdx' # mdx/mdd 文件目录
-mdd_cache_dir = 'cache'
+mdict_dir = '../../mdx'  # mdx/mdd 文件目录
+mdd_cache_dir = '../../cache'
 
 if not os.path.isdir(mdict_dir):
     print('no mdx directory\n', file=sys.stderr)

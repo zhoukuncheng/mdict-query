@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from readmdict import MDX, MDD
+from .readmdict import MDX, MDD
 from struct import pack, unpack
 from io import BytesIO
 import re
@@ -14,10 +14,10 @@ import json
 import zlib
 # LZO compression is used for engine version < 2.0
 try:
-    import lzo
-except ImportError:
+    from . import lzo
+except ImportError as e:
     lzo = None
-    #print("LZO compression support is not available")
+    print(f"LZO compression support is not available:{e}")
 
 # 2x3 compatible
 if sys.hexversion >= 0x03000000:

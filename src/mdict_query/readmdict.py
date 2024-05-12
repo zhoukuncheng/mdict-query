@@ -23,17 +23,17 @@ import re
 import sys
 import json
 
-from ripemd128 import ripemd128
-from pureSalsa20 import Salsa20
+from .ripemd128 import ripemd128
+from .pureSalsa20 import Salsa20
 
 # zlib compression is used for engine version >=2.0
 import zlib
 # LZO compression is used for engine version < 2.0
 try:
-    import lzo
-except ImportError:
+    from . import lzo
+except ImportError as e:
     lzo = None
-    print("LZO compression support is not available")
+    print(f"LZO compression support is not available:{e}")
 
 # 2x3 compatible
 if sys.hexversion >= 0x03000000:
@@ -461,6 +461,8 @@ class MDD(MDict):
         i = 0
         size_counter = 0
         for compressed_size, decompressed_size in record_block_info_list:
+            start = i
+            end = i + compressed_size
             record_block_compressed = f.read(compressed_size)
             # 4 bytes: compression type
             record_block_type = record_block_compressed[:4]
@@ -539,6 +541,8 @@ class MDD(MDict):
         i = 0
         size_counter = 0
         for compressed_size, decompressed_size in record_block_info_list:
+            start = i
+            end = i + compressed_size
             current_pos = f.tell()
             record_block_compressed = f.read(compressed_size)
             # 4 bytes: compression type
