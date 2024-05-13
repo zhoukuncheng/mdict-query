@@ -51,3 +51,11 @@ Looks up mdd with a key:
     bytes_list = builder.mdd_lookup('/style.css')
     #bytes_list is the bytes list of the file stored in mdd
 
+
+## Installation
+
+Forked repo supports `pip install`:
+```shell
+pip install git+https://github.com/zhoukuncheng/mdict-query.git
+```
+
